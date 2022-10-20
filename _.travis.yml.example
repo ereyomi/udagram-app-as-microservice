@@ -1,0 +1,18 @@
+services:
+  - docker
+
+before_script:
+  - docker-compose -f docker-compose-build.yaml build --parallel
+
+script:
+  # Tagging
+  - docker tag udagram-api-feed ereyomi/udagram-api-feed:latest
+  - docker tag udagram-api-user ereyomi/udagram-api-user:latest
+  - docker tag udagram-frontend ereyomi/udagram-frontend:latest
+  - docker tag reverseproxy ereyomi/reverseproxy:latest
+  # Pushing
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push ereyomi/reverseproxy:latest
+  - docker push ereyomi/udagram-api-feed:latest
+  - docker push ereyomi/udagram-api-user:latest
+  - docker push ereyomi/udagram-frontend:latest
