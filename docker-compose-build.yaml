@@ -1,0 +1,23 @@
+# Make sure the Docker services are running in your local machine
+# Remove unused and dangling images
+# docker image prune --all
+# Run this command from the directory where you have the "docker-compose-build.yaml" file present
+# docker-compose -f docker-compose-build.yaml build --parallel
+version: "3"
+services:
+  reverseproxy:
+    build:
+      context: ./udagram-reverseproxy
+    image: reverseproxy
+  backend_user:
+    build:
+      context: ./udagram-api-user
+    image: udagram-api-user
+  backend_feed:
+    build:
+      context: ./udagram-api-feed
+    image: udagram-api-feed
+  frontend:
+    build:
+      context: ./udagram-frontend
+    image: udagram-frontend
