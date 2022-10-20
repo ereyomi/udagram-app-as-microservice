@@ -5,15 +5,22 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v3
-    - run: npm ci
+      - uses: actions/checkout@v3
+      - run: docker-compose -f docker-compose-build.yaml build --parallel
+      - run: docker tag udagram-api-feed ereyomi/udagram-api-feed:v1
+      - run: docker tag udagram-api-user ereyomi/udagram-api-user:v1
+      - run: docker tag udagram-frontend ereyomi/udagram-frontend:v1
+      - run: docker tag ereyomi/reverseproxy:v1
+      - run: docker push ereyomi/udagram-api-feed:v1
+      - run: docker push ereyomi/udagram-api-user:v1
+      - run: docker push ereyomi/udagram-frontend:v1
+      - run: docker push ereyomi/reverseproxy:v1
