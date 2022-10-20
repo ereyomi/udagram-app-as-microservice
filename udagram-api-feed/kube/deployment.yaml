@@ -21,7 +21,7 @@ spec:
             optional: false
       containers:
         - name: backend-feed
-          image: ereyomi/udagram-api-feed
+          image: ereyomi/udagram-api-feed:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -36,7 +36,7 @@ spec:
               readOnly: true
           envFrom:
             - secretRef:
-                name: app-secret
+                name: udagram-db-secrets
             - configMapRef:
-                name: app-config
+                name: udagram-env
       restartPolicy: Always

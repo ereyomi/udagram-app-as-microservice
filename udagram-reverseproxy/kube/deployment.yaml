@@ -15,8 +15,8 @@ spec:
         app: reverseproxy
     spec:
       containers:
-        - image: ereyomi/reverseproxy
-          name: reverseproxy
+        - name: reverseproxy
+          image: ereyomi/reverseproxy:v1
           imagePullPolicy: Always
           resources:
             limits:
