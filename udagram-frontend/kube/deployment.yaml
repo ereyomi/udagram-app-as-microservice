@@ -15,14 +15,14 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: udagram-frontend
-        image: triple0t/udagram-frontend
-        imagePullPolicy: Always 
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            cpu: 500m
-          requests:
-            cpu: 200m
+        - name: udagram-frontend
+          image: ereyomi/udagram-frontend
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
       restartPolicy: Always

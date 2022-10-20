@@ -15,14 +15,14 @@ spec:
         app: reverseproxy
     spec:
       containers:
-      - image: triple0t/reverseproxy
-        name: reverseproxy
-        imagePullPolicy: Always          
-        resources:
-          limits:
-            cpu: 500m
-          requests:
-            cpu: 200m      
-        ports:
-        - containerPort: 8080
-      restartPolicy: Always  
+        - image: ereyomi/reverseproxy
+          name: reverseproxy
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always

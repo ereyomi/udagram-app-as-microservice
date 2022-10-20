@@ -47,3 +47,5 @@ venv/
 !.elasticbeanstalk/*.global.yml
 
 set_env.sh
+kubectl
+deploy.sh
