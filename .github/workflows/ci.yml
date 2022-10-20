@@ -19,7 +19,8 @@ jobs:
       - run: docker tag udagram-api-feed ereyomi/udagram-api-feed:v1
       - run: docker tag udagram-api-user ereyomi/udagram-api-user:v1
       - run: docker tag udagram-frontend ereyomi/udagram-frontend:v1
-      - run: docker tag ereyomi/reverseproxy:v1
+      - run: docker tag reverseproxy ereyomi/reverseproxy:v1
+      - run: echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u "${{secrets.DOCKER_USERNAME}}" --password-stdin
       - run: docker push ereyomi/udagram-api-feed:v1
       - run: docker push ereyomi/udagram-api-user:v1
       - run: docker push ereyomi/udagram-frontend:v1
